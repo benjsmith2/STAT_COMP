@@ -55,13 +55,13 @@ Using the [gout](https://github.com/gdlc/STAT_COMP/blob/master/goutData.txt) pro
    fm=glm(gout2~sex+race+age,data=tmpData,family='binomial')
    bHat=coef(fm)
    
-   B[i,1]=exp(bHat[])
+   B[i,1]=exp(bHat[2])
    B[i,2]=exp(bHat[3])
    
    eta=Z%*%bHat
    probs=exp(eta)/(1+exp(eta))
    B[i,3:6]=probs
-   message(i)	
+   if (i %% 100 == 0) message(i)	
  }
  
 CI= apply(FUN=quantile,X=B,MARGIN=2,prob=c(.025,.975))
